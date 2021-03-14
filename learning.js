@@ -41,19 +41,19 @@
 // result = search(names, "Jaideep");
 // printResult(result);
 
-//=====================================================================
+// //=====================================================================
 
-/* This is a similar example where a function searches for a name in an array of names,
- * but it has been written using a different for loop construct.
- */
+// /* This is a similar example where a function searches for a name in an array of names,
+//  * but it has been written using a different for loop construct.
+//  */
 // function search(names, nameToFind) {
 //     let result = { found : false, location : -1, nameToFind : null };
 
 //     result.nameToFind = nameToFind;
 
 //     let i=0;
-//     for (name of names) {
-//         if ( nameToFind === name ) {
+//     for (name1 of names) {
+//         if ( nameToFind === name1 ) {
 //             result.found = true;
 //             result.location = i;
 //             break;
@@ -81,35 +81,60 @@
 
 //=====================================================================
 
-/* This piece of code demonstrates use of while loop */
+// /* This piece of code demonstrates use of while loop */
 
-/**
- * The function walks through all numbers from start to end, and prints out
- * numbers that are multiples of the argument multipleOf
- * 
- * @param {*} start The starting number to start testing
- * @param {*} end The ending number to ned testing
- * @param {*} divisibleBy The number to be used to test for divisibility 
- */
-function printMultiplesOf(start, end, divisibleBy) {
-    let i = start;
-    let found = false;
-    while ( i <= end ) {
-        if ( i % divisibleBy == 0 ) {
-            console.log(i + " is a multiple of " + divisibleBy);
-            found = true;
-        }
-        i++;
+// /**
+//  * The function walks through all numbers from start to end, and prints out
+//  * numbers that are multiples of the argument divisibleBy
+//  * 
+//  * @param {*} start The starting number to start testing
+//  * @param {*} end The ending number to end testing
+//  * @param {*} divisibleBy The number to be used to test for divisibility 
+//  */
+// function printMultiplesOf(start, end, divisibleBy) {
+//     let i = start;
+//     let found = false;
+//     while ( i <= end ) {
+//         if ( i % divisibleBy == 0 ) {
+//             console.log(i + " is a multiple of " + divisibleBy);
+//             found = true;
+//         }
+//         i++;
+//     }
+//     if ( !found ) {
+//         console.log("Did not find any number between " + start + " and " + end + " that is divisible by " + divisibleBy);
+//     }
+// }
+
+// // printMultiplesOf(1, 20, 5);
+// // printMultiplesOf(7, 16, 3);
+// // printMultiplesOf(16, 18, 5);
+
+// // We should also try to break the code by flipping the start and end to see how it behaves
+// printMultiplesOf(10, 1, 2);
+
+//=====================================================================
+
+function flipIt(arr, start, end) {
+    if ( start < 0 || end >= arr.length ) {
+        return arr;
     }
-    if ( !found ) {
-        console.log("Did not find any number between " + start + " and " + end + " that is divisible by " + divisibleBy);
+    for (i=start, j=end; i < j; ++i, --j) {
+        swap(arr, i, j);
     }
+    return arr;
 }
 
-printMultiplesOf(1, 20, 5);
-printMultiplesOf(7, 16, 3);
-printMultiplesOf(16, 18, 5);
+function swap(arr, i, j) {
+    temp = arr[i];
+    arr[i] = arr[j]
+    arr[j] = temp;
+}
 
-// We should also try to break the code by flipping the start and end to see how it behaves
-printMultiplesOf(10, 1, 2);
+const months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+console.log("Before flipping", months);
+flipIt(months, 0, 11);
+console.log("After flipping", months);
+
+//=====================================================================
 
